@@ -1,21 +1,34 @@
-db.students.insert( [   {
-    name: "Emma Johnson",
-    age: 20,
-    major: "Computer Science",
-    gpa: 3.8,
-    courses: ["Introduction to Programming", "Data Structures", "Algorithms"]
-  },
-  {
-    name: "Liam Smith",
-    age: 22,
-    major: "Mathematics",
-    gpa: 3.9,
-    courses: ["Calculus III", "Linear Algebra", "Number Theory"]
-  },
-  {
-    name: "Charlie Brown",
-    age: 21,
-    major: "Physics",
-    gpa: 3.9,
-    courses: ["Classical Mechanics", "Electromagnetism", "Quantum Physics"]
-  },])
+function analyzeSentence(sentence) {
+  let characterCount = 0;
+  let wordCount = 0;
+  let vowelCount = 0;
+
+  const vowels = "aeiouAEIOU";
+  let isPreviousSpace = true;
+
+  for (let i = 0; i < sentence.length; i++) {
+    let char = sentence[i];
+    characterCount++;
+
+    if (vowels.includes(char)) {
+      vowelCount++;
+    }
+
+    if (char === " ") {
+      isPreviousSpace = true;
+    } else if (isPreviousSpace) {
+      wordCount++;
+      isPreviousSpace = false;
+    }
+
+    if (char === ".") {
+      break;
+    }
+  }
+
+  console.log(`Longueur de la phrase : ${characterCount}`);
+  console.log(`Nombre de mots : ${wordCount}`);
+  console.log(`Nombre de voyelles : ${vowelCount}`);
+}
+
+analyzeSentence("Hello world this is a test.");
